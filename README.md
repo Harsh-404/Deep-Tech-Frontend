@@ -1,4 +1,4 @@
-# DT Frontend Challenges - Storyboard Web App
+# DT Frontend - Storyboard Web App
 
 A responsive storyboard web application built for the DeepThought recruitment platform. This application dynamically fetches task data and renders interactive asset containers.
 
