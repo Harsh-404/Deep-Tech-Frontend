@@ -13,7 +13,7 @@ A responsive storyboard web application built for the DeepThought recruitment pl
 ## Project Structure
 
 ```
-dt-frontend-challenges/
+dt-frontend/
 ├── index.html              # Entry point
 ├── project.json            # Local data source (CORS bypass)
 ├── css/
