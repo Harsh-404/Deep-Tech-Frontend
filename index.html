@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DT Frontend Challenges</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo" aria-label="DeepThought Homepage">
+                <img src="https://deepthought.education/assets/images/logo/logo.svg" alt="DeepThought Logo">
+            </a>
+            <nav class="header-nav">
+                <a href="#" class="nav-item" aria-label="Home"><i class="fas fa-home"></i></a>
+                <a href="#" class="nav-item" aria-label="Tools"><i class="fas fa-tools"></i></a>
+                <a href="#" class="nav-item" aria-label="Notifications"><i class="fas fa-bell"></i></a>
+                <a href="#" class="nav-item user-profile" aria-label="User Profile">
+                    <img src="https://ui-avatars.com/api/?name=User&background=random" alt="User Avatar">
+                </a>
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="sidebar-container collapsed" id="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-title">Journey Board</span>
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Expand/Collapse Sidebar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <ul class="journey-list" id="journeyList">
+                <!-- Journey items populated dynamically -->
+            </ul>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="task-header">
+            <h1 id="taskTitle" class="task-title">Loading Task...</h1>
+            <button class="submit-task-btn">Submit Task</button>
+        </div>
+
+        <section class="task-info">
+            <div class="task-description-container">
+                <h2 id="taskSubtitle">Loading...</h2>
+                <div id="taskDescription" class="task-description">
+                    <!-- Task description content -->
+                </div>
+            </div>
+        </section>
+
+        <section class="assets-grid" id="assetsList">
+            <!-- Asset containers will be dynamically inserted here -->
+            <div class="loading-state">
+                <div class="loader"></div>
+                <p>Loading project data...</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <button class="fab-item" aria-label="Help">?</button>
+        <button class="fab-item" aria-label="Meeting">Meet</button>
+        <button class="fab-item" aria-label="Schedule">Cal</button>
+    </div>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/dataFetcher.js"></script>
+    <script src="js/assetRenderer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

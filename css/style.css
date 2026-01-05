@@ -1,0 +1,491 @@
+:root {
+    /* Colors */
+    --primary-color: #0029FF; /* DeepThought Blue */
+    --secondary-color: #3683F0;
+    --background-color: #F0F0F0;
+    --card-bg: #FFFFFF;
+    --text-primary: #000000;
+    --text-secondary: #606060;
+    --border-color: #E0E0E0;
+    --accent-color: #FFC107;
+    
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    /* Typography */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    
+    /* Other */
+    --border-radius: 15px;
+    --shadow-main: 0 4px 4px rgba(0, 0, 0, 0.25);
+    --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
+    --transition-speed: 0.3s;
+    --header-height: 90px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+.main-header {
+    background-color: #F0F0F0;
+    height: var(--header-height);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.nav-item {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+.nav-item:hover {
+    color: var(--secondary-color);
+}
+
+.user-profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* Sidebar (Journey Board) Styles */
+.sidebar-container {
+    position: fixed;
+    left: 0;
+    top: var(--header-height);
+    bottom: 0;
+    background: var(--card-bg);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 900;
+    transition: width var(--transition-speed) ease;
+    overflow: hidden;
+    width: 350px;
+}
+
+.sidebar-container.collapsed {
+    width: 132px; /* Top part remains expanded width initially then visually handled differently */
+    width: 50px; /* Actual collapsed width */
+}
+
+/* Custom Design for Collapsed Sidebar from Figma */
+.sidebar-container.collapsed {
+    width: 132px;
+    border-radius: 0 20px 20px 0;
+}
+.sidebar-header {
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 20px 0 0;
+    height: 50px;
+}
+.sidebar-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+} 
+/* Collapse Logic */
+.sidebar-container.collapsed .sidebar-content {
+    display: none;
+}
+.sidebar-container.collapsed .sidebar-title{
+    display: none; /* Hide title when collapsed per design intent mostly */
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transform: rotate(180deg);
+}
+.sidebar-container.collapsed .sidebar-toggle {
+    transform: rotate(0deg);
+    margin: 0 auto;
+}
+
+.sidebar-content {
+    padding: var(--spacing-md);
+    overflow-y: auto;
+    height: calc(100% - 50px);
+}
+
+.journey-list {
+    list-style: none;
+}
+.journey-list li {
+    padding: 8px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Main Content Area */
+.main-content {
+    margin-top: calc(var(--header-height) + 20px);
+    margin-left: 150px; /* Space for sidebar */
+    margin-right: 100px;
+    padding: var(--spacing-lg);
+    max-width: 1200px;
+    transition: margin-left var(--transition-speed);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.task-title {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.submit-task-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.submit-task-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.task-info {
+    background-color: #E9ECEF;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.task-info h2 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Asset Grid */
+.assets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 40px;
+    justify-content: center;
+}
+
+/* Asset Container Component */
+.asset-container {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-main);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px; /* Minimum height for consistency */
+    position: relative;
+    /* transition: box-shadow var(--transition-speed), transform var(--transition-speed); */
+}
+/* Removed global scale on hover as verified in design it might be annoying for inputs */
+.asset-container:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.asset-header {
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.asset-title-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.asset-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.info-icon {
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.asset-description-box {
+    background: #FDFDFD;
+    padding: var(--spacing-md) 20px;
+    border-bottom: 1px solid #EBEBEB;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.05); /* Subtle separator */
+}
+
+.asset-description-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+} 
+.asset-description-text span {
+    font-weight: 600;
+    color: black;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.asset-content {
+    padding: var(--spacing-lg);
+    flex-grow: 1; /* Fills remaining space */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Specific Content Types */
+.video-content iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    border: none;
+}
+
+.article-content {
+    background: #FCFCFC;
+    padding: var(--spacing-md);
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+}
+.article-content a {
+    color: var(--primary-color);
+    font- weight: 600;
+    text-decoration: none;
+}
+
+/* Thread Builder Styles */
+.thread-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: height 0.3s ease;
+    overflow: hidden;
+}
+
+.thread-header-row {
+    display: flex;
+    justify-content: space-between;
+    background: #FEFFC033; /* Very light yellow tint */
+    padding: 10px;
+    align-items: center;
+}
+.thread-toggle-btn {
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.thread-inputs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.thread-sub-input {
+    flex: 1;
+    min-width: 150px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.1);
+}
+.thread-sub-input label {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.thread-sub-input textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    resize: vertical;
+    min-height: 60px;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.85rem;
+}
+
+.thread-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+.select-category {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 0.8rem;
+}
+.add-thread-btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: var(--spacing-md);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Floating Actions */
+.floating-actions {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+.fab-item {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+.fab-item:first-child {
+    background-color: #3683F0; /* Blue */
+}
+
+/* Loader */
+.loading-state {
+    text-align: center;
+    padding: 50px;
+    grid-column: 1 / -1;
+}
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px;
+    }
+    .sidebar-container {
+        display: none; /* Hide sidebar completely on mobile unless toggled */
+    }
+    .assets-grid {
+        grid-template-columns: 1fr;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    .header-nav a:not(.menu-toggle):not(.user-profile) {
+        display: none;
+    }
+    .main-header {
+        height: 60px;
+    }
+    .main-content {
+        margin-top: 80px;
+    }
+}
